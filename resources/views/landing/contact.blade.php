@@ -1,8 +1,10 @@
-@include('landing.layouts.head')
+@extends('landing.layouts.master')
+@section('title','Contact us')
+@section('description','Daud Raza here boiii')
+@section('content')
 <body class="contact">
 
     <!-- Header Starts -->
-    @include('landing.layouts.header')
 
     <!-- Header Ends -->
     <!-- Page Title Starts -->
@@ -21,11 +23,11 @@
                     <p class="open-sans-font mb-3">Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
                     <p class="open-sans-font custom-span-contact position-relative">
                         <i class="fa fa-envelope-open position-absolute"></i>
-                        <span class="d-block">mail me</span><a href="mailto: malikmuhsin70@gmail.com" class="text-white">malikmuhsin70@gmail.com</a>
+                        <span class="d-block">mail me</span><a href="mailto: {{$people[0]->email}}" class="text-white">{{$people[0]->email}}</a>
                     </p>
                     <p class="open-sans-font custom-span-contact position-relative">
                         <i class="fa fa-phone-square position-absolute"></i>
-                        <span class="d-block">call me</span><a href="tel: +923036931887" class="text-white">+92 303 6931887</a>
+                        <span class="d-block">call me</span><a href="tel: {{$people[0]->phone}}" class="text-white">{{$people[0]->phone}}</a>
                     </p>
                     <ul class="social list-unstyled pt-1 mb-5">
                         <li class="linkedin"><a title="LinkedIn" href="https://www.linkedin.com/in/mohsin-malik-53a5a4157/"><i class="fa fa-linkedin"></i></a>
@@ -71,6 +73,6 @@
 
     </section>
     <!--  JS Files -->
-    @include('landing.layouts.scripts')
 
-@include('landing.layouts.footer')
+
+@endsection

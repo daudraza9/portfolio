@@ -1,9 +1,8 @@
-@include('landing.layouts.head')
-@section('title','Daud Raza')
-@section('description','Hello Im here')
+@extends('landing.layouts.master')
+@section('title',$people[0]->first_name . ' '.$people[0]->last_name)
+@section('description','Daud Raza here boiii')
+@section('content')
 <body class="home">
-
-@include('landing.layouts.header')
 
 <!-- Main Content Starts -->
 <section class="container-fluid main-container container-home p-0 revealator-slideup revealator-once revealator-delay1">
@@ -27,7 +26,4 @@
     </div>
 </section>
 <!-- Main Content Ends -->
-
-@include('landing.layouts.scripts')
-
-@include('landing.layouts.footer')
+@endsection

@@ -47,7 +47,7 @@
             <div class="container-fluid">
                 <ul>
                     <li class="@yield('dashboard_select')">
-                        <a href="{{route('admin.index')}}">
+                        <a href="{{route('index')}}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="@yield('person_select')">
@@ -77,7 +77,7 @@
                 <ul class="list-unstyled navbar__list">
 
                     <li class="@yield('dashboard_select')">
-                        <a href="{{route('admin.index')}}">
+                        <a href="{{route('index')}}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="@yield('person_select')">
@@ -126,10 +126,16 @@
 
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="">
-                                                <i class="zmdi zmdi-power"></i>Logout
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
                                             </a>
+
                                         </div>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </div>
                             </div>
