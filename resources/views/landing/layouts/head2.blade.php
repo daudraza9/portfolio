@@ -17,7 +17,7 @@
     <meta name="keywords" content="HTML5, CSS3, JQuery, Bootstrap, Web Design, Web Development, Responsive website, Creative website">
 
     <!-- Title -->
-    <title>BuggBear - @yield('Pagetitle')</title>
+    <title>BuggBear - @yield('title')</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('front-assets/img/favicon.png')}}">

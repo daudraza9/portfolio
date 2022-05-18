@@ -1,9 +1,11 @@
-@include('landing.layouts.head')
-
+@extends('landing.layouts.master')
+@section('title','About us | '.$people[0]->first_name . ' '.$people[0]->last_name)
+@section('description','Daud Raza here boiii')
+@section('content')
 <body class="about">
 
     <!-- Header Starts -->
-    @include('landing.layouts.header')
+
 
     <!-- Header Ends -->
     <!-- Page Title Starts -->
@@ -156,6 +158,5 @@
     <!-- Main Content Ends -->
 
     <!-- Template JS Files -->
-    @include('landing.layouts.scripts')
 
-@include('landing.layouts.footer')
+@endsection

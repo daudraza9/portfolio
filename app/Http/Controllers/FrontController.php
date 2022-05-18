@@ -36,9 +36,12 @@ class FrontController extends Controller
             'portfolio'=>$portfolio,
         ]);
     }
-    public function contactUs()
+    public function contactUs(Request $request,$slug)
     {
-        return view('landing.contact');
+        $people = People::where('slug',$slug)->get();
+        return view('landing.contact',[
+            'people'=>$people,
+        ]);
     }
     public function person(Request $request,$slug)
     {
