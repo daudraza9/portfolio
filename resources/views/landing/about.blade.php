@@ -23,7 +23,7 @@
                             <h3 class="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
                         </div>
                         <div class="col-12 d-block d-sm-none">
-                            <img src="{{asset('front-assets/img/img-mobile.jpg')}}" class="img-fluid main-img-mobile" alt="my picture" />
+                            <img src="{{asset('storage/person/'.$people[0]->image)}}" class="img-fluid main-img-mobile" alt="my picture" />
                         </div>
                         <div class="col-6">
                             <ul class="about-list list-unstyled open-sans-font">

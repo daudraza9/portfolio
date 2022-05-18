@@ -41,15 +41,6 @@
                             <td>{{$item->slug}}</td>
                             <td><img src="{{asset('storage/person/'.$item->image)}}" alt="person image"></td>
                             <td>
-                                @if($item->is_home==1)
-                                    <a href="{{route('admin.person.change-visibility',['is_home' => 0,'id'=>$item->id])}}">
-                                        <button type="button" class="btn btn-info">Active</button>
-                                    </a>
-                                @elseif($item->is_home==0)
-                                    <a href="{{route('admin.person.change-visibility',['is_home' => 1,'id'=>$item->id])}}">
-                                        <button type="button" class="btn btn-warning">DeActive</button>
-                                    </a>
-                                @endif
                                 <a href="{{route('admin.person.edit',['id'=>$item->id])}}"><button type="button" class="btn btn-success">Edit</button></a>
                                 <a href="{{route('admin.person.delete',['id'=>$item->id])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                             </td>

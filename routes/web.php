@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 /*--LANDING ROUTES--*/
 Route::get('/', [FrontController::class, 'index'])->name('index');
-Route::get('/person/{slug}', [FrontController::class, 'person']);
+Route::get('/person/{slug}', [FrontController::class, 'person'])->name('person');
 Route::get('/about-us/{slug}', [FrontController::class, 'aboutUs'])->name('about-us');
 Route::get('/portfolio/{slug}', [FrontController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [FrontController::class, 'contactUs'])->name('contact-us');

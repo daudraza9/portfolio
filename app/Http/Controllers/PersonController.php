@@ -52,7 +52,12 @@ class PersonController extends Controller
             'total_clients'=>'required',
             'total_tip'=>'required',
             'description'=>'required',
-            'image'=>'required|mimes:jpeg,jpg,png',
+            'image'=>[
+                'image',
+                'mimes:jpg,png,jpeg,gif',
+                'max:200',
+                'dimensions:min_width=400,min_height=400,max_width=800,max_height=1100'
+            ],
         ]);
         $skillArray =$request->skill;
         $levelArray =$request->level;

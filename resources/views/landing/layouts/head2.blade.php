@@ -5,19 +5,19 @@
 <head>
     <!-- Basic SEO -->
     <meta charset="gb18030">
- <!-- Title -->
-    <title>BuggBear - @yield('title')</title>
+
     <!-- Meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="@yield('description','BugBear deals with the Web Development , Web Designing , SEO and other web based projects with 100% accuracy and assurance of standing first in the market.')">
+    <meta name="description" content="BugBear deals with the Web Development , Web Designing , SEO and other web based projects with 100% accuracy and assurance of standing first in the market.">
     <meta name="keywords" content="Web Development, BugBear, Web Design, Full Stack Developer, Website, Html5, CSS, JavaScript, Bootstrap, Buggbear, Bugbear, Art of Creation, Front-End Developer, Front-End Design, HTML5, CSS3, JQuery, Bootstrap, Web Design, Web Development, Responsive website, Creative website ">
     <meta name="author" content="Daud Raza">
-
+    <meta name="description" content="Creative website development with html5, css3, jQuery & bootstrap framework">
     <meta name="keywords" content="HTML5, CSS3, JQuery, Bootstrap, Web Design, Web Development, Responsive website, Creative website">
 
-
+    <!-- Title -->
+    <title>BuggBear - @yield('Pagetitle')</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('front-assets/img/favicon.png')}}">
