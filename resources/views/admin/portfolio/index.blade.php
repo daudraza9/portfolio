@@ -34,20 +34,20 @@
                     <tbody>
                     @foreach($portfolio as $item)
                         <tr>
-                            <td> {{$item->id}}</td>
-                            <td> {{$item->name}}</td>
-                            <td> {{$item->client}}</td>
-                            <td> @if(isset($item->people_id)) @if(!empty($item->people))
+                            <td class="pt-4"> {{$item->id}}</td>
+                            <td class="pt-4"> {{$item->name}}</td>
+                            <td class="pt-4"> {{$item->client}}</td>
+                            <td class="pt-4"> @if(isset($item->people_id)) @if(!empty($item->people))
                                    <p> {{$item->people->first_name}} {{$item->people->last_name}}</p>
                                 @endif
                                 @endif
                             </td>
 
-                            <td>
-                                <img src="{{asset('storage/portfolio/'.$item->featured_image)}}" alt="featured_image">
+                            <td class="text-center">
+                                <img class="ht-100" src="{{asset('storage/portfolio/'.$item->featured_image)}}" alt="featured_image">
                             </td>
-                            <td>
-                                <img src="{{asset('storage/portfolio/'.$item->banner_image)}}" alt="banner_image">
+                            <td class="text-center">
+                                <img class="ht-100" src="{{asset('storage/portfolio/'.$item->banner_image)}}" alt="banner_image">
                             </td>
 
                             <td>
