@@ -46,6 +46,17 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
+                                            <label for="designation" class="control-label mb-1">Designation</label>
+                                            <input id="designation" name="designation" type="text" class="form-control"
+                                                   aria-required="true" aria-invalid="false" required
+                                                   @if(isset($people)) value="{{$people->designation}}" @endif>
+                                            @error('designation')
+                                            <div class="alert alert-danger" role="alert">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
                                             <label for="age" class="control-label mb-1">Age</label>
                                             <input id="age" name="age" type="number" class="form-control"
                                                    aria-required="true" aria-invalid="false" required
