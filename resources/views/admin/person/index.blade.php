@@ -34,12 +34,12 @@
                     <tbody>
                     @foreach($person as $item)
                         <tr>
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->first_name }}{{$item->last_name}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->skype}}</td>
-                            <td>{{$item->slug}}</td>
-                            <td><img src="{{asset('storage/person/'.$item->image)}}" alt="person image"></td>
+                            <td class="pt-4">{{$item->id}}</td>
+                            <td class="pt-4">{{$item->first_name }}{{$item->last_name}}</td>
+                            <td class="pt-4">{{$item->email}}</td>
+                            <td class="pt-4">{{$item->skype}}</td>
+                            <td class="pt-4">{{$item->slug}}</td>
+                            <td><img class="ht-100" src="{{asset('storage/person/'.$item->image)}}" alt="person image"></td>
                             <td>
                                 <a href="{{route('admin.person.edit',['id'=>$item->id])}}"><button type="button" class="btn btn-success">Edit</button></a>
                                 <a href="{{route('admin.person.delete',['id'=>$item->id])}}"><button type="button" class="btn btn-danger">Delete</button></a>
