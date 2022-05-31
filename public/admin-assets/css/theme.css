@@ -14652,3 +14652,6 @@ section {
 .ht-100{
     max-height:100px;
   }
+  .opacity-0{
+    opacity: 0;
+}
