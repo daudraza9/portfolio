@@ -38,6 +38,9 @@ class PersonController extends Controller
         $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
+            'designation'=>'required',
+            'github_username'=>'required',
+            'linkedIn_url'=>'required',
             'age'=>'required',
             'slug'=>'required|unique:people,slug,' . $request->post('id'),
             'nationality'=>'required',
@@ -76,6 +79,9 @@ class PersonController extends Controller
         $person = People::create([
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
+            'designation'=>$request->designation,
+            'linkedIn_url'=>$request->linkedIn_url,
+            'github_username'=>$request->github_username,
             'age'=>$request->age,
             'nationality'=>$request->nationality,
             'freelance'=>$request->freelance,
@@ -171,6 +177,9 @@ class PersonController extends Controller
         $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
+            'designation'=>'required',
+            'github_username'=>'required',
+            'linkedIn_url'=>'required',
             'age'=>'required',
             'slug'=>'required',
             'nationality'=>'required',
@@ -190,6 +199,9 @@ class PersonController extends Controller
         $people = People::findorfail($request->id);
         $people->first_name = $request->first_name;
         $people->last_name = $request->last_name;
+        $people->designation = $request->designation;
+        $people->github_username= $request->github_username;
+        $people->linkedIn_url = $request->linkedIn_url;
         $people->description = $request->description;
         $people->age = $request->age;
         $people->nationality = $request->nationality;

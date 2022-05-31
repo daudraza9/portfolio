@@ -34,7 +34,7 @@
                         </li>
                         <li class="github"><a title="Github" href="https://github.com/MohsinMalik2"><i class="fa fa-github"></i></a>
                         </li>
-                        <li class="skype"><a title="SKype" href="https://join.skype.com/invite/YND8Fw1qVsyP"><i class="fa fa-skype"></i></a>
+                        <li class="skype"><a title="SKype" href="https://join/skype.com/invite/{{$people[0]->skype}}"><i class="fa fa-skype"></i></a>
                         </li>
                     </ul>
                 </div>

@@ -57,6 +57,28 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
+                                            <label for="github_username" class="control-label mb-1">Github Username</label>
+                                            <input id="github_username" name="github_username" type="text" class="form-control"
+                                                   aria-required="true" aria-invalid="false" required
+                                                   @if(isset($people)) value="{{$people->github_username}}" @endif>
+                                            @error('github_username')
+                                            <div class="alert alert-danger" role="alert">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="linkedIn_url" class="control-label mb-1">LinkedIn Profile link</label>
+                                            <input id="linkedIn_url" name="linkedIn_url" type="text" class="form-control"
+                                                   aria-required="true" aria-invalid="false" required
+                                                   @if(isset($people)) value="{{$people->linkedIn_url}}" @endif>
+                                            @error('linkedIn_url')
+                                            <div class="alert alert-danger" role="alert">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
                                             <label for="age" class="control-label mb-1">Age</label>
                                             <input id="age" name="age" type="number" class="form-control"
                                                    aria-required="true" aria-invalid="false" required
@@ -586,15 +608,7 @@
                                                                    @if(isset($experience)) value="{{$experienceArray->exp_end}}"
                                                                    @endif required>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <label for="designation" class="control-label mb-1">
-                                                                Designation</label>
-                                                            <input id="designation" name="designation[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->designation}}"
-                                                                   @endif required>
-                                                        </div>
+
                                                         <div class="col-md-3">
                                                             <label for="company"
                                                                    class="control-label mb-1">Company</label>
@@ -661,15 +675,7 @@
                                                                    @if(isset($experience)) value="{{$experienceArray->exp_end}}"
                                                                    @endif required>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <label for="designation" class="control-label mb-1">
-                                                                Designation</label>
-                                                            <input id="designation" name="designation[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->designation}}"
-                                                                   @endif required>
-                                                        </div>
+
                                                         <div class="col-md-3">
                                                             <label for="company"
                                                                    class="control-label mb-1">Company</label>
@@ -789,7 +795,6 @@
 
             html += '<div class="col-md-2"><label for="exp_end" class="control-label mb-1"> End Date</label><input id="exp_end" name="exp_end[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
-            html += '<div class="col-md-3"><label for="designation" class="control-label mb-1"> designation</label><input id="designation" name="designation[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 
             html += '<div class="col-md-3"><label for="company" class="control-label mb-1"> company</label><input id="company" name="company[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 

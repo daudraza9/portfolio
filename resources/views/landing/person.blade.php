@@ -15,7 +15,7 @@
             <div>
                 <img src="{{asset('storage/person/'.$people[0]->image)}}" class="img-fluid main-img-mobile d-none d-sm-block d-lg-none" alt="my picture" />
                 <h1 class="text-uppercase poppins-font">I'm {{$people[0]->first_name}} {{$people[0]->last_name}}
-                    <span> {{$people[0]->designation}}</span>
+                    <span> {!! $people[0]->designation !!}</span>
                 </h1>
                 <p class="open-sans-font">{!! $people[0]->description !!}</p>
                 <a class="button" href="{{route('about-us',['slug'=>$people[0]->slug])}}">
