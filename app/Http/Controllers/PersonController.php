@@ -42,6 +42,7 @@ class PersonController extends Controller
             'slug'=>'required|unique:people,slug,' . $request->post('id'),
             'nationality'=>'required',
             'freelance'=>'required',
+            'person_designation'=>'required',
             'address'=>'required',
             'phone'=>'required',
             'email'=>'required',
@@ -79,6 +80,7 @@ class PersonController extends Controller
             'age'=>$request->age,
             'nationality'=>$request->nationality,
             'freelance'=>$request->freelance,
+            'designation'=>$request->person_designation,
             'address'=>$request->address,
             'phone'=>$request->phone,
             'email'=>$request->email,
@@ -172,6 +174,7 @@ class PersonController extends Controller
             'first_name'=>'required',
             'last_name'=>'required',
             'age'=>'required',
+            'person_designation'=>'required',
             'slug'=>'required',
             'nationality'=>'required',
             'freelance'=>'required',
@@ -192,6 +195,7 @@ class PersonController extends Controller
         $people->last_name = $request->last_name;
         $people->description = $request->description;
         $people->age = $request->age;
+        $people->designation=$request->person_designation;
         $people->nationality = $request->nationality;
         $people->freelance = $request->freelance;
         $people->address = $request->address;

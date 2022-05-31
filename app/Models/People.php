@@ -16,6 +16,7 @@ class People extends Model
         'nationality',
         'freelance',
         'address',
+        'designation',
         'phone',
         'email',
         'skype',

@@ -46,8 +46,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="designation" class="control-label mb-1">Designation</label>
-                                            <input id="designation" name="designation" type="text" class="form-control"
+                                            <label for="person_designation" class="control-label mb-1">Designation</label>
+                                            <input id="person_designation" name="person_designation" type="text" class="form-control"
                                                    aria-required="true" aria-invalid="false" required
                                                    @if(isset($people)) value="{{$people->designation}}" @endif>
                                             @error('designation')
@@ -67,11 +67,6 @@
                                             </div>
                                             @enderror
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <label for="nationality" class="control-label mb-1">Nationality</label>
                                             <input id="nationality" name="nationality" type="text" class="form-control"
@@ -85,7 +80,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="freelance" class="control-label mb-1">Freelance</label>
-                                            <select name="freelance" id="freelance">
+                                            <select name="freelance" id="freelance" class="form-control">
                                                 <option value="Available">Available</option>
                                                 <option value="Not Available">Not Available</option>
                                             </select>
@@ -95,8 +90,6 @@
                                             </div>
                                             @enderror
                                         </div>
-
-
                                         <div class="col-md-4">
                                             <label for="address" class="control-label mb-1">Address</label>
                                             <input id="address" name="address" type="text" class="form-control"
@@ -109,11 +102,6 @@
                                             @enderror
 
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <label for="phone" class="control-label mb-1">Phone</label>
                                             <input id="phone" name="phone" type="text" class="form-control"
@@ -150,11 +138,6 @@
                                             @enderror
 
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <label for="language" class="control-label mb-1">Language</label>
                                             <input id="language" name="language" type="text" class="form-control"
@@ -177,8 +160,6 @@
                                             </div>
                                             @enderror
                                         </div>
-
-
                                         <div class="col-md-4">
                                             <label for="project_completed" class="control-label mb-1">Project
                                                 Completed</label>
@@ -193,11 +174,6 @@
                                             @enderror
 
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <label for="total_clients" class="control-label mb-1">Total Clients</label>
                                             <input id="total_clients" name="total_clients" type="number"
@@ -232,25 +208,6 @@
                                             </div>
                                             @enderror
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="description" class="control-label mb-1">Description</label>
-                                            <textarea id="description" name="description" type="text"
-                                                      class="form-control"
-                                                      aria-required="true" aria-invalid="false" required
-                                            > @if(isset($people))  {{$people->description}} @endif</textarea>
-                                            @error('description')
-                                            <div class="alert alert-danger" role="alert">
-                                                {{$message}}
-                                            </div>
-                                            @enderror
-
-                                        </div>
-
                                         <div class="col-md-4">
                                             <label for="image" class="control-label mb-1">Upload Image</label>
                                             <input id="image" name="image" type="file" class="form-control"
@@ -266,460 +223,482 @@
 
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="is_home" class="control-label mb-1">
-                                                Show in home page</label>
-                                            <input id="is_home" name="is_home" type="checkbox"
-                                                   aria-required="true" aria-invalid="false"
-                                                   @if(isset($category)) @if($category->is_home == 1) checked @endif @endif >
+                                            <label for="" class="control-label mb-1"></label>
+                                            <div class="form-check mt-3">
+                                                <label for="is_home" class="control-label mb-1">
+                                                    Show in home page</label>
+                                                <input id="is_home" name="is_home" type="checkbox" class="ml-3"
+                                                    aria-required="true" aria-invalid="false"
+                                                    @if(isset($category)) @if($category->is_home == 1) checked @endif @endif >
 
-                                            @error('is_home')
+                                                @error('is_home')
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="description" class="control-label mb-1">Description</label>
+                                            <textarea id="description" name="description" type="text"
+                                                      class="form-control"
+                                                      aria-required="true" aria-invalid="false" required
+                                            > @if(isset($people))  {{$people->description}} @endif</textarea>
+                                            @error('description')
                                             <div class="alert alert-danger" role="alert">
                                                 {{$message}}
                                             </div>
                                             @enderror
 
                                         </div>
+
+                                        <div class="col-md-12 my-3">
+                                            <h2 class="">Add Skills</h2>
+                                        </div>
+
+                                        <div class="col-md-12" id="product_attr_box">
+                                            @php
+                                                $loop_count_num=1;
+                                            @endphp
+
+                                            @if(isset($people))
+                                            @foreach($skills as $key=>$val)
+
+                                            @php
+                                                    $loop_count_prev=$loop_count_num;
+                                                    $skillsArray=$val;
+                                                @endphp
+                                                <input id="skill_id" type="hidden" name="skill_id[]"
+                                                    value="{{$skillsArray->id}}">
+                                                <div class="card" id="product_attr_{{$loop_count_num++}}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label for="skill" class="control-label mb-1"> Skill</label>
+                                                                    <input id="skill" name="skill[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($skills)) value="{{$skillsArray->name}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label for="level" class="control-label mb-1"> Level</label>
+                                                                    <input id="level" name="level[]" type="number"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($skills)) value="{{$skillsArray->level}}"
+                                                                        @endif  required>
+                                                                </div>
+
+                                                                <div class="col-md-2">
+                                                                    <label for="attr_image" class="control-label mb-1 opacity-0"> techno</label>
+                                                                        
+                                                                    @if($loop_count_num==2)
+                                                                        <button type="button" class="btn btn-success"
+                                                                                onclick="add_more()">
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                        </button>
+                                                                    @else
+                                                                        <a href="">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            @else
+                                                <div class="card" id="product_attr_{{$loop_count_num++}}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label for="skill" class="control-label mb-1"> Skill</label>
+                                                                    <input id="skill" name="skill[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($skills)) value="{{$skillsArray->name}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label for="level" class="control-label mb-1"> Level</label>
+                                                                    <input id="level" name="level[]" type="number"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($skills)) value="{{$skillsArray->level}}"
+                                                                        @endif  required>
+                                                                </div>
+
+                                                                <div class="col-md-2">
+                                                                    <label for="attr_image" class="control-label mb-1 opacity-0">
+                                                                        te</label>
+
+                                                                    @if($loop_count_num==2)
+                                                                        <button type="button" class="btn btn-success"
+                                                                                onclick="add_more()">
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                        </button>
+                                                                    @else
+                                                                        <a href="">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-md-12 my-3">
+                                            <h2 class="">Add Education</h2>
+                                        </div>
+                                        <div class="col-md-12" id="education_box">
+                                            @php
+                                                $loop_count_num=1;
+                                            @endphp
+                                            @if(isset($people))
+                                            @foreach($education as $key=>$val)
+                                                @php
+                                                    $loop_count_prev=$loop_count_num;
+                                                    $educationArrays=$val;
+                                                @endphp
+                                                <input id="education_id" type="hidden" name="education_id[]"
+                                                    value="{{$educationArrays->id}}">
+                                                <div class="card" id="education_attr_{{$loop_count_num++}}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label for="start" class="control-label mb-1"> Start
+                                                                        Date</label>
+                                                                    <input id="start" name="start[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->start}}"
+                                                                        @endif
+                                                                        required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="end" class="control-label mb-1"> End
+                                                                        Date</label>
+                                                                    <input id="end" name="end[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->end}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="degree" class="control-label mb-1">
+                                                                        Degree</label>
+                                                                    <input id="degree" name="degree[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->degree}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="university" class="control-label mb-1">University</label>
+                                                                    <input id="university" name="university[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->university}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label for="education_description"
+                                                                        class="control-label mb-1">Education
+                                                                        Description</label>
+                                                                    <textarea id="education_description"
+                                                                            name="education_description[]" type="date"
+                                                                            class="form-control"
+                                                                            aria-required="true" aria-invalid="false"
+                                                                            required> @if(isset($education)) {{ $educationArrays->education_description }} @endif</textarea>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="attr_image" class="control-label mb-1 opacity-0 d-block">
+                                                                        op</label>
+
+                                                                    @if($loop_count_num==2)
+                                                                        <button type="button" class="btn btn-success"
+                                                                                onclick="add_more_education()">
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                        </button>
+                                                                    @else
+                                                                        <a href="">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                            @else
+                                                <div class="card" id="education_attr_{{$loop_count_num++}}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label for="start" class="control-label mb-1"> Start
+                                                                        Date</label>
+                                                                    <input id="start" name="start[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->start}}"
+                                                                        @endif
+                                                                        required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="end" class="control-label mb-1"> End
+                                                                        Date</label>
+                                                                    <input id="end" name="end[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->end}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="degree" class="control-label mb-1">
+                                                                        Degree</label>
+                                                                    <input id="degree" name="degree[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->degree}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="university" class="control-label mb-1">University</label>
+                                                                    <input id="university" name="university[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($education)) value="{{$educationArrays->university}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label for="education_description"
+                                                                        class="control-label mb-1">Education
+                                                                        Description</label>
+                                                                    <textarea id="education_description"
+                                                                            name="education_description[]" type="date"
+                                                                            class="form-control"
+                                                                            aria-required="true" aria-invalid="false"
+                                                                            required> @if(isset($education)) {{ $educationArrays->education_description }} @endif</textarea>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="attr_image" class="control-label mb-1 opacity-0 d-block">
+                                                                        te</label>
+
+                                                                    @if($loop_count_num==2)
+                                                                        <button type="button" class="btn btn-success"
+                                                                                onclick="add_more_education()">
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                        </button>
+                                                                    @else
+                                                                        <a href="">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-12 my-3">
+                                            <h2 class="">Add Experience</h2>
+                                        </div>
+                                        <div class="col-md-12" id="experience_box">
+                                            @php
+                                                $loop_count_num=1;
+                                            @endphp
+                                            @if(isset($people))
+                                            @foreach($experience as $key=>$val)
+                                                @php
+                                                    $loop_count_prev=$loop_count_num;
+                                                    $experienceArray = $val;
+                                                @endphp
+                                                <input id="experience_id" type="hidden" name="experience_id[]"
+                                                    value="{{$experienceArray->id}}">
+                                                <div class="card" id="education_attr_{{$loop_count_num++}}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label for="exp_start" class="control-label mb-1"> Start
+                                                                        Date</label>
+                                                                    <input id="exp_start" name="exp_start[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->exp_start}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="exp_end" class="control-label mb-1"> End
+                                                                        Date</label>
+                                                                    <input id="exp_end" name="exp_end[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->exp_end}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="designation" class="control-label mb-1">
+                                                                        Designation</label>
+                                                                    <input id="designation" name="designation[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->designation}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="company"
+                                                                        class="control-label mb-1">Company</label>
+                                                                    <input id="company" name="company[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->company}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label for="experience_description"
+                                                                        class="control-label mb-1">Experience
+                                                                        Description</label>
+                                                                    <textarea id="experience_description"
+                                                                            name="experience_description[]" type="date"
+                                                                            class="form-control"
+                                                                            aria-required="true" aria-invalid="false"
+                                                                            required>@if(isset($experience))  {{$experienceArray->experience_description}} @endif</textarea>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="attr_image" class="control-label mb-1 opacity-0 d-block">
+                                                                        op</label>
+
+                                                                    @if($loop_count_num==2)
+                                                                        <button type="button" class="btn btn-success"
+                                                                                onclick="add_more_experience()">
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                        </button>
+                                                                    @else
+                                                                        <a href=" ">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            @else
+                                                <div class="card" id="education_attr_{{$loop_count_num++}}">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label for="exp_start" class="control-label mb-1"> Start
+                                                                        Date</label>
+                                                                    <input id="exp_start" name="exp_start[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->exp_start}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="exp_end" class="control-label mb-1"> End
+                                                                        Date</label>
+                                                                    <input id="exp_end" name="exp_end[]" type="date"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->exp_end}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="designation" class="control-label mb-1">
+                                                                        Designation</label>
+                                                                    <input id="designation" name="designation[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->designation}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="company"
+                                                                        class="control-label mb-1">Company</label>
+                                                                    <input id="company" name="company[]" type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true" aria-invalid="false"
+                                                                        @if(isset($experience)) value="{{$experienceArray->company}}"
+                                                                        @endif required>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label for="experience_description"
+                                                                        class="control-label mb-1">Experience
+                                                                        Description</label>
+                                                                    <textarea id="experience_description"
+                                                                            name="experience_description[]" type="date"
+                                                                            class="form-control"
+                                                                            aria-required="true" aria-invalid="false"
+                                                                            required>@if(isset($experience))  {{$experienceArray->experience_description}} @endif</textarea>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="attr_image" class="control-label mb-1 opacity-0 d-block">0</label>
+
+                                                                    @if($loop_count_num==2)
+                                                                        <button type="button" class="btn btn-success"
+                                                                                onclick="add_more_experience()">
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                        </button>
+                                                                    @else
+                                                                        <a href=" ">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <button id="payment-button" type="submit" class="btn btn-info btn-block">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <h2 class="mb10 ml15">Add Skills</h2>
-                                <div class="col-lg-12" id="product_attr_box">
-                                    @php
-                                        $loop_count_num=1;
-                                    @endphp
-
-                                    @if(isset($people))
-                                    @foreach($skills as $key=>$val)
-
-                                     @php
-                                            $loop_count_prev=$loop_count_num;
-                                            $skillsArray=$val;
-                                        @endphp
-                                        <input id="skill_id" type="hidden" name="skill_id[]"
-                                               value="{{$skillsArray->id}}">
-                                        <div class="card" id="product_attr_{{$loop_count_num++}}">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <label for="skill" class="control-label mb-1"> Skill</label>
-                                                            <input id="skill" name="skill[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($skills)) value="{{$skillsArray->name}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label for="level" class="control-label mb-1"> Level</label>
-                                                            <input id="level" name="level[]" type="number"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($skills)) value="{{$skillsArray->level}}"
-                                                                   @endif  required>
-                                                        </div>
-
-                                                        <div class="col-md-2">
-                                                            <label for="attr_image" class="control-label mb-1">
-                                                                &nbsp;&nbsp;&nbsp;</label>
-
-                                                            @if($loop_count_num==2)
-                                                                <button type="button" class="btn btn-success btn-lg"
-                                                                        onclick="add_more()">
-                                                                    <i class="fa fa-plus"></i>&nbsp; Add
-                                                                </button>
-                                                            @else
-                                                                <a href="">
-                                                                    <button type="button" class="btn btn-danger btn-lg">
-                                                                        <i class="fa fa-minus"></i>&nbsp; Remove
-                                                                    </button>
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                    @else
-                                        <div class="card" id="product_attr_{{$loop_count_num++}}">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <label for="skill" class="control-label mb-1"> Skill</label>
-                                                            <input id="skill" name="skill[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($skills)) value="{{$skillsArray->name}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label for="level" class="control-label mb-1"> Level</label>
-                                                            <input id="level" name="level[]" type="number"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($skills)) value="{{$skillsArray->level}}"
-                                                                   @endif  required>
-                                                        </div>
-
-                                                        <div class="col-md-2">
-                                                            <label for="attr_image" class="control-label mb-1">
-                                                                &nbsp;&nbsp;&nbsp;</label>
-
-                                                            @if($loop_count_num==2)
-                                                                <button type="button" class="btn btn-success btn-lg"
-                                                                        onclick="add_more()">
-                                                                    <i class="fa fa-plus"></i>&nbsp; Add
-                                                                </button>
-                                                            @else
-                                                                <a href="">
-                                                                    <button type="button" class="btn btn-danger btn-lg">
-                                                                        <i class="fa fa-minus"></i>&nbsp; Remove
-                                                                    </button>
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                                <h2 class="mb10 ml15">Add Education</h2>
-                                <div class="col-lg-12" id="education_box">
-                                    @php
-                                        $loop_count_num=1;
-                                    @endphp
-                                    @if(isset($people))
-                                    @foreach($education as $key=>$val)
-                                        @php
-                                            $loop_count_prev=$loop_count_num;
-                                            $educationArrays=$val;
-                                        @endphp
-                                        <input id="education_id" type="hidden" name="education_id[]"
-                                               value="{{$educationArrays->id}}">
-                                        <div class="card" id="education_attr_{{$loop_count_num++}}">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label for="start" class="control-label mb-1"> Start
-                                                                Date</label>
-                                                            <input id="start" name="start[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->start}}"
-                                                                   @endif
-                                                                   required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="end" class="control-label mb-1"> End
-                                                                Date</label>
-                                                            <input id="end" name="end[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->end}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="degree" class="control-label mb-1">
-                                                                Degree</label>
-                                                            <input id="degree" name="degree[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->degree}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="university" class="control-label mb-1">University</label>
-                                                            <input id="university" name="university[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->university}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label for="education_description"
-                                                                   class="control-label mb-1">Education
-                                                                Description</label>
-                                                            <textarea id="education_description"
-                                                                      name="education_description[]" type="date"
-                                                                      class="form-control"
-                                                                      aria-required="true" aria-invalid="false"
-                                                                      required> @if(isset($education)) {{ $educationArrays->education_description }} @endif</textarea>
-                                                        </div>
-
-                                                        <div class="col-md-3">
-                                                            <label for="attr_image" class="control-label mb-1">
-                                                                &nbsp;&nbsp;&nbsp;</label>
-
-                                                            @if($loop_count_num==2)
-                                                                <button type="button" class="btn btn-success btn-lg"
-                                                                        onclick="add_more_education()">
-                                                                    <i class="fa fa-plus"></i>&nbsp; Add
-                                                                </button>
-                                                            @else
-                                                                <a href="">
-                                                                    <button type="button" class="btn btn-danger btn-lg">
-                                                                        <i class="fa fa-minus"></i>&nbsp; Remove
-                                                                    </button>
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                    @else
-                                        <div class="card" id="education_attr_{{$loop_count_num++}}">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label for="start" class="control-label mb-1"> Start
-                                                                Date</label>
-                                                            <input id="start" name="start[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->start}}"
-                                                                   @endif
-                                                                   required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="end" class="control-label mb-1"> End
-                                                                Date</label>
-                                                            <input id="end" name="end[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->end}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="degree" class="control-label mb-1">
-                                                                Degree</label>
-                                                            <input id="degree" name="degree[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->degree}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="university" class="control-label mb-1">University</label>
-                                                            <input id="university" name="university[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($education)) value="{{$educationArrays->university}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label for="education_description"
-                                                                   class="control-label mb-1">Education
-                                                                Description</label>
-                                                            <textarea id="education_description"
-                                                                      name="education_description[]" type="date"
-                                                                      class="form-control"
-                                                                      aria-required="true" aria-invalid="false"
-                                                                      required> @if(isset($education)) {{ $educationArrays->education_description }} @endif</textarea>
-                                                        </div>
-
-                                                        <div class="col-md-3">
-                                                            <label for="attr_image" class="control-label mb-1">
-                                                                &nbsp;&nbsp;&nbsp;</label>
-
-                                                            @if($loop_count_num==2)
-                                                                <button type="button" class="btn btn-success btn-lg"
-                                                                        onclick="add_more_education()">
-                                                                    <i class="fa fa-plus"></i>&nbsp; Add
-                                                                </button>
-                                                            @else
-                                                                <a href="">
-                                                                    <button type="button" class="btn btn-danger btn-lg">
-                                                                        <i class="fa fa-minus"></i>&nbsp; Remove
-                                                                    </button>
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-
-                                <h2 class="mb10 ml15">Add Experience</h2>
-                                <div class="col-lg-12" id="experience_box">
-                                    @php
-                                        $loop_count_num=1;
-                                    @endphp
-                                    @if(isset($people))
-                                    @foreach($experience as $key=>$val)
-                                        @php
-                                            $loop_count_prev=$loop_count_num;
-                                            $experienceArray = $val;
-                                        @endphp
-                                        <input id="experience_id" type="hidden" name="experience_id[]"
-                                               value="{{$experienceArray->id}}">
-                                        <div class="card" id="education_attr_{{$loop_count_num++}}">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label for="exp_start" class="control-label mb-1"> Start
-                                                                Date</label>
-                                                            <input id="exp_start" name="exp_start[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->exp_start}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="exp_end" class="control-label mb-1"> End
-                                                                Date</label>
-                                                            <input id="exp_end" name="exp_end[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->exp_end}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="designation" class="control-label mb-1">
-                                                                Designation</label>
-                                                            <input id="designation" name="designation[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->designation}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="company"
-                                                                   class="control-label mb-1">Company</label>
-                                                            <input id="company" name="company[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->company}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label for="experience_description"
-                                                                   class="control-label mb-1">Experience
-                                                                Description</label>
-                                                            <textarea id="experience_description"
-                                                                      name="experience_description[]" type="date"
-                                                                      class="form-control"
-                                                                      aria-required="true" aria-invalid="false"
-                                                                      required>@if(isset($experience))  {{$experienceArray->experience_description}} @endif</textarea>
-                                                        </div>
-
-                                                        <div class="col-md-3">
-                                                            <label for="attr_image" class="control-label mb-1">
-                                                                &nbsp;&nbsp;&nbsp;</label>
-
-                                                            @if($loop_count_num==2)
-                                                                <button type="button" class="btn btn-success btn-lg"
-                                                                        onclick="add_more_experience()">
-                                                                    <i class="fa fa-plus"></i>&nbsp; Add
-                                                                </button>
-                                                            @else
-                                                                <a href=" ">
-                                                                    <button type="button" class="btn btn-danger btn-lg">
-                                                                        <i class="fa fa-minus"></i>&nbsp; Remove
-                                                                    </button>
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                    @else
-                                        <div class="card" id="education_attr_{{$loop_count_num++}}">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label for="exp_start" class="control-label mb-1"> Start
-                                                                Date</label>
-                                                            <input id="exp_start" name="exp_start[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->exp_start}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="exp_end" class="control-label mb-1"> End
-                                                                Date</label>
-                                                            <input id="exp_end" name="exp_end[]" type="date"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->exp_end}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="designation" class="control-label mb-1">
-                                                                Designation</label>
-                                                            <input id="designation" name="designation[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->designation}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="company"
-                                                                   class="control-label mb-1">Company</label>
-                                                            <input id="company" name="company[]" type="text"
-                                                                   class="form-control"
-                                                                   aria-required="true" aria-invalid="false"
-                                                                   @if(isset($experience)) value="{{$experienceArray->company}}"
-                                                                   @endif required>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label for="experience_description"
-                                                                   class="control-label mb-1">Experience
-                                                                Description</label>
-                                                            <textarea id="experience_description"
-                                                                      name="experience_description[]" type="date"
-                                                                      class="form-control"
-                                                                      aria-required="true" aria-invalid="false"
-                                                                      required>@if(isset($experience))  {{$experienceArray->experience_description}} @endif</textarea>
-                                                        </div>
-
-                                                        <div class="col-md-3">
-                                                            <label for="attr_image" class="control-label mb-1">
-                                                                &nbsp;&nbsp;&nbsp;</label>
-
-                                                            @if($loop_count_num==2)
-                                                                <button type="button" class="btn btn-success btn-lg"
-                                                                        onclick="add_more_experience()">
-                                                                    <i class="fa fa-plus"></i>&nbsp; Add
-                                                                </button>
-                                                            @else
-                                                                <a href=" ">
-                                                                    <button type="button" class="btn btn-danger btn-lg">
-                                                                        <i class="fa fa-minus"></i>&nbsp; Remove
-                                                                    </button>
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                        Submit
-                                    </button>
-                                </div>
-
                             </form>
                         </div>
                     </div>
@@ -740,7 +719,7 @@
 
             html += '<div class="col-md-2"><label for="level" class="control-label mb-1"> Level</label><input id="level" name="level[]" type="number" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
-            html += '<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg" onclick=remove_more("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+            html += '<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_more("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
 
             html += '</div></div></div></div>';
 
@@ -766,9 +745,9 @@
             html += '<div class="col-md-3"><label for="university" class="control-label mb-1"> university</label><input id="university" name="university[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 
 
-            html += '<div class="col-md-3"><label for="education_description" class="control-label mb-1"> education description</label><textarea id="education_description" name="education_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
+            html += '<div class="col-md-5"><label for="education_description" class="control-label mb-1"> education description</label><textarea id="education_description" name="education_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
 
-            html += '<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg" onclick=remove_education("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+            html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_education("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
 
             html += '</div></div></div></div>';
 
@@ -794,9 +773,9 @@
             html += '<div class="col-md-3"><label for="company" class="control-label mb-1"> company</label><input id="company" name="company[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 
 
-            html += '<div class="col-md-3"><label for="experience_description" class="control-label mb-1"> Experience description</label><textarea id="experience_description" name="experience_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
+            html += '<div class="col-md-5"><label for="experience_description" class="control-label mb-1"> Experience description</label><textarea id="experience_description" name="experience_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
 
-            html += '<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg" onclick=remove_experience("' + exp_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+            html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_experience("' + exp_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
 
             html += '</div></div></div></div>';
 

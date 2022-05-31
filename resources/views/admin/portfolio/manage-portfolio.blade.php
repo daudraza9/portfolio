@@ -2,7 +2,38 @@
 @section('page_title','Manage Portfolio')
 @section('portfolio_select','active')
 @section('container')
+<style>
+    .form-group .select2-container {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100% !important;
+    margin-bottom: 0;
+    display: table;
+    table-layout: fixed;
+    }
+    .form-group .select2-container .select2-selection--single .select2-selection__rendered{
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+    }
+    .form-group .select2-container--default .select2-selection--single{
+        height:auto !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.25rem !important;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
 
+    .form-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 26px;
+        position: absolute;
+        top: 7px;
+        right: 1px;
+        width: 20px;
+    }
+   
+</style>
 
     <h3>Manage Portfolio</h3>
     <a href="{{route('admin.portfolio.index')}}">
@@ -44,7 +75,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="language" class="control-label mb-1">Language</label>
+                                            <label for="language" class="control-label mb-1">Language (Seperate with commas ",")</label>
                                             <input id="language" name="language" type="text" class="form-control"
                                                    aria-required="true" aria-invalid="false" required
                                                    @if(isset($portfolio)) value="{{$portfolio->language}}" @endif>
@@ -102,13 +133,10 @@
                                             </div>
                                             @enderror
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="people" class="control-label mb-1">Add People </label>
-                                            <select name="people" id="people">
+                                            
+                                            <select name="people" id="people" class="form-control w-100">
                                                 <option value=""></option>
                                                 @if(isset($portfolio))
                                                     @if(!empty($portfolio->people))

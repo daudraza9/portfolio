@@ -47,7 +47,7 @@
             <div class="container-fluid">
                 <ul>
                     <li class="@yield('dashboard_select')">
-                        <a href="{{route('index')}}">
+                        <a href="{{route('admin.index')}}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="@yield('person_select')">
@@ -77,7 +77,7 @@
                 <ul class="list-unstyled navbar__list">
 
                     <li class="@yield('dashboard_select')">
-                        <a href="{{route('index')}}">
+                        <a href="{{route('admin.index')}}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="@yield('person_select')">
