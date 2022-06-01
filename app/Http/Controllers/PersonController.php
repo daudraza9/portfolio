@@ -80,7 +80,6 @@ class PersonController extends Controller
         $person = People::create([
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
-            'designation'=>$request->designation,
             'linkedIn_url'=>$request->linkedIn_url,
             'github_username'=>$request->github_username,
             'age'=>$request->age,
@@ -174,6 +173,7 @@ class PersonController extends Controller
             'experience'=>$experience,
         ]);
     }
+
     public function update(Request $request){
 //        dd($request->all());
         $request->validate([
@@ -197,12 +197,11 @@ class PersonController extends Controller
             'total_clients'=>'required',
             'total_tip'=>'required',
             'description'=>'required',
-            'image'=>'required|mimes:jpeg,jpg,png',
+//            'image'=>'required|mimes:jpeg,jpg,png',
         ]);
         $people = People::findorfail($request->id);
         $people->first_name = $request->first_name;
         $people->last_name = $request->last_name;
-        $people->designation = $request->designation;
         $people->github_username= $request->github_username;
         $people->linkedIn_url = $request->linkedIn_url;
         $people->description = $request->description;
@@ -243,26 +242,34 @@ class PersonController extends Controller
         $SkillIdArray = $request->skill_id;
         $skillArray =$request->skill;
         $levelArray =$request->level;
-
         foreach ($skillArray as $key=>$val)
         {
             $personSkills = [];
             $personSkills['person_id']=$people_Id;
             $personSkills['name'] =$skillArray[$key];
             $personSkills['level']=$levelArray[$key];
-            DB::table('skills')->where('id',$SkillIdArray[$key])->update($personSkills);
+
+                if($SkillIdArray[$key] !='')
+                {
+                    DB::table('skills')->where(['id'=>$SkillIdArray[$key]])->update($personSkills);
+                }
+                else
+                {
+                    DB::table('skills')->insert($personSkills);
+                }
+
         }
         //-- person skills ends --//
 
         //--- person education start ---//
-        $educationArray =$request->education_id;
+        $educationIdArray =$request->education_id;
         $startArray = $request->start;
         $endArray = $request->end;
         $degreeArray = $request->degree;
         $universityArray = $request->university;
         $educationDescriptionArray = $request->education_description;
 
-        foreach ($educationArray as $key => $val)
+        foreach ($educationIdArray as $key => $val)
         {
             $personEducation = [];
             $personEducation['people_id']=$people_Id;
@@ -271,10 +278,46 @@ class PersonController extends Controller
             $personEducation['degree']=$degreeArray[$key];
             $personEducation['university']=$universityArray[$key];
             $personEducation['education_description']=$educationDescriptionArray[$key];
-            DB::table('education')->where('id',$educationArray[$key])->update($personEducation);
+
+            if($educationIdArray[$key] !='')
+            {
+                DB::table('education')->where('id', $educationIdArray[$key])->update($personEducation);
+            }
+            else
+            {
+                Education::create($personEducation);
+            }
         }
         //--- person education end ---//
 
+        //--Person experience start--//
+        $experienceIdArray = $request->experience_id;
+        $expStartArray = $request->start;
+        $expEndArray = $request->end;
+        $designationArray = $request->designation;
+        $companyArray = $request->company;
+        $experienceDescriptionArray = $request->experience_description;
+
+        foreach ($experienceIdArray as $key => $val)
+        {
+            $personExperience = [];
+            $personExperience['people_id']=$people_Id;
+            $personExperience['exp_start']=$expStartArray[$key];
+            $personExperience['exp_end']=$expEndArray[$key];
+            $personExperience['designation']=$designationArray[$key];
+            $personExperience['company']=$companyArray[$key];
+            $personExperience['experience_description']=$experienceDescriptionArray[$key];
+
+            if($experienceIdArray[$key] !='')
+            {
+                DB::table('experiences')->where('id', $experienceIdArray[$key])->update($personExperience);
+            }
+            else{
+            Experience::create($personExperience);
+            }
+        }
+
+        //--Person experience end--//
         $msg = "People updated successfully";
         $request->session()->flash('message',$msg);
         return redirect('admin/person');

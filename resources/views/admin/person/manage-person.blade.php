@@ -233,7 +233,7 @@
                                         <div class="col-md-4">
                                             <label for="image" class="control-label mb-1">Upload Image</label>
                                             <input id="image" name="image" type="file" class="form-control"
-                                                   aria-required="true" aria-invalid="false" required
+                                                   aria-required="true" aria-invalid="false"
                                                    value="">
                                             @if(isset($people)) <img src="{{asset('storage/person/'.$people->image)}}"
                                                                      alt=""> @endif
@@ -793,6 +793,8 @@
 
 
             html += '<div class="col-md-3"><label for="company" class="control-label mb-1"> company</label><input id="company" name="company[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
+
+            html += '<div class="col-md-3"><label for="designation" class="control-label mb-1"> Designation</label><input id="company" name="designation[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 
 
             html += '<div class="col-md-5"><label for="experience_description" class="control-label mb-1"> Experience description</label><textarea id="experience_description" name="experience_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
