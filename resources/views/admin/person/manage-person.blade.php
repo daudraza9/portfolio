@@ -232,11 +232,10 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="image" class="control-label mb-1">Upload Image</label>
-                                            <input id="image" name="image" type="file" class="form-control"
+                                            <input id="image" name="image" type="file" class="form-control dropify"
                                                    aria-required="true" aria-invalid="false"
-                                                   value="">
-                                            @if(isset($people)) <img src="{{asset('storage/person/'.$people->image)}}"
-                                                                     alt=""> @endif
+                                                   @if(isset($people)) data-default-file="{{asset('storage/person/'.$people->image)}}" @endif>
+                                           
                                             @error('image')
                                             <div class="alert alert-danger" role="alert">
                                                 {{$message}}
