@@ -322,8 +322,9 @@
                                                                                 onclick="add_more()">
                                                                             <i class="fa fa-plus"></i>&nbsp; Add
                                                                         </button>
+
                                                                     @else
-                                                                        <a href="">
+                                                                        <a href="{{route('admin.person.delete-skill',['skillId'=>$skillsArray->id,'personId'=>$people->id])}}">
                                                                             <button type="button" class="btn btn-danger">
                                                                                 <i class="fa fa-minus"></i>&nbsp; Remove
                                                                             </button>
@@ -456,10 +457,15 @@
                                                                     @if($loop_count_num==2)
                                                                         <button type="button" class="btn btn-success"
                                                                                 onclick="add_more_education()">
-                                                                            <i class="fa fa-plus"></i>&nbsp; Add
+                                                                            <i class="fa fa-plus"></i>&nbsp; Add More
                                                                         </button>
+                                                                        <a href="{{route('admin.person.delete-education',['educationId'=>$educationArrays->id,'personId'=>$people->id])}}">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
                                                                     @else
-                                                                        <a href="">
+                                                                        <a href="{{route('admin.person.delete-education',['educationId'=>$educationArrays->id,'personId'=>$people->id])}}">
                                                                             <button type="button" class="btn btn-danger">
                                                                                 <i class="fa fa-minus"></i>&nbsp; Remove
                                                                             </button>
@@ -625,8 +631,13 @@
                                                                                 onclick="add_more_experience()">
                                                                             <i class="fa fa-plus"></i>&nbsp; Add
                                                                         </button>
+                                                                        <a href="{{route('admin.person.delete-experience',['experienceId'=>$experienceArray->id,'personId'=>$people->id])}}">
+                                                                            <button type="button" class="btn btn-danger">
+                                                                                <i class="fa fa-minus"></i>&nbsp; Remove
+                                                                            </button>
+                                                                        </a>
                                                                     @else
-                                                                        <a href=" ">
+                                                                        <a href="{{route('admin.person.delete-experience',['experienceId'=>$experienceArray->id,'personId'=>$people->id])}}">
                                                                             <button type="button" class="btn btn-danger">
                                                                                 <i class="fa fa-minus"></i>&nbsp; Remove
                                                                             </button>
@@ -756,8 +767,8 @@
         var edu_loop_count = 1
 
         function add_more_education() {
-            loop_count++;
-            var html = '<input id="education_id" type="hidden" name="education_id[]" ><div class="card" id="education_attr_' + loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
+            edu_loop_count++;
+            var html = '<input id="education_id" type="hidden" name="education_id[]" ><div class="card" id="education_attr_' + edu_loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
 
             html += '<div class="col-md-2"><label for="start" class="control-label mb-1"> Start Date</label><input id="start" name="start[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
@@ -770,7 +781,7 @@
 
             html += '<div class="col-md-5"><label for="education_description" class="control-label mb-1"> education description</label><textarea id="education_description" name="education_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
 
-            html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_education("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+            html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_education("' + edu_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
 
             html += '</div></div></div></div>';
 
