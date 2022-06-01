@@ -281,11 +281,12 @@ class PersonController extends Controller
 
             if($educationIdArray[$key] !='')
             {
-                DB::table('education')->where('id', $educationIdArray[$key])->update($personEducation);
+                DB::table('education')->where('id', $educationIdArray[$key])->update($personEducation); //facades
             }
             else
             {
-                Education::create($personEducation);
+//                Education::create($personEducation); //eloquent
+                DB::table('education')->insert($personEducation);
             }
         }
         //--- person education end ---//
@@ -366,6 +367,25 @@ class PersonController extends Controller
 
     }
 
+    public function deleteSkill(Request $request,$skillId,$personId)
+    {
+        $skill = Skill::findorfail($skillId);
+        $skill->delete();
+        return redirect('admin/person/edit/'.$personId);
+    }
 
+    public function deleteEducation(Request $request,$educationId,$personId)
+    {
+        $education = Education::findorfail($educationId);
+        $education->delete();
+        return redirect('admin/person/edit/'.$personId);
+    }
+
+    public function deleteExperience(Request $request,$experienceId,$personId)
+    {
+        $experience = Experience::findorfail($experienceId);
+        $experience->delete();
+        return redirect('admin/person/edit/'.$personId);
+    }
 
 }
