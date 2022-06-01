@@ -207,10 +207,10 @@
                             <th>date</th>
                             <th>order ID</th>
                             <th>order by</th>
-                            <th class="text-right">package name</th>
-                            <th class="text-right">price</th>
-                            <th class="text-right">slug (with link)</th>
-                            <th class="text-right">view</th>
+                            <th class="text-center">package name</th>
+                            <th class="text-center">price</th>
+                            <th class="text-center">slug</th> 
+                            <th class="text-center">view</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -218,9 +218,9 @@
                             <td>2018-09-29 05:57</td>
                             <td>100398</td>
                             <td>Jwell hungry</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
+                            <td class="text-center">$999.00</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">$999.00</td>
                             <td> 
                                 <a href="#" class="btn btn-success">
                                     <i class="fas fa-eye"></i>
@@ -231,9 +231,9 @@
                             <td>2018-09-29 05:57</td>
                             <td>100398</td>
                             <td>Jwell hungry</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
+                            <td class="text-center">$999.00</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">$999.00</td>
                             <td> 
                                 <a href="#" class="btn btn-success">
                                     <i class="fas fa-eye"></i>
@@ -244,9 +244,9 @@
                             <td>2018-09-29 05:57</td>
                             <td>100398</td>
                             <td>Jwell hungry</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
+                            <td class="text-center">$999.00</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">$999.00</td>
                             <td> 
                                 <a href="#" class="btn btn-success">
                                     <i class="fas fa-eye"></i>
@@ -257,9 +257,9 @@
                             <td>2018-09-29 05:57</td>
                             <td>100398</td>
                             <td>Jwell hungry</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
+                            <td class="text-center">$999.00</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">$999.00</td>
                             <td> 
                                 <a href="#" class="btn btn-success">
                                     <i class="fas fa-eye"></i>
@@ -270,9 +270,9 @@
                             <td>2018-09-29 05:57</td>
                             <td>100398</td>
                             <td>Jwell hungry</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
+                            <td class="text-center">$999.00</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">$999.00</td>
                             <td> 
                                 <a href="#" target="_blank" class="btn btn-success">
                                     <i class="fas fa-eye"></i>
