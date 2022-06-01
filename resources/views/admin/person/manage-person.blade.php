@@ -37,7 +37,7 @@
                                         <div class="col-md-4">
                                             <label for="last_name" class="control-label mb-1">Last Name</label>
                                             <input id="last_name" name="last_name" type="text" class="form-control"
-                                                   aria-required="true" aria-invalid="false" required
+                                                   aria-required="true" aria-invalid="false"  onchange="slugValue()"
                                                    @if(isset($people)) value="{{$people->last_name}}" @endif>
                                             @error('last_name')
                                             <div class="alert alert-danger" role="alert">
@@ -222,7 +222,7 @@
                                         <div class="col-md-4">
                                             <label for="slug" class="control-label mb-1">Slug</label>
                                             <input id="slug" name="slug" type="text" class="form-control"
-                                                   aria-required="true" aria-invalid="false" required
+                                                   aria-required="true" aria-invalid="false" readonly
                                                    @if(isset($people)) value="{{$people->slug}}" @endif>
                                             @error('slug')
                                             <div class="alert alert-danger" role="alert">
@@ -823,5 +823,17 @@
 
         CKEDITOR.replace('description');
         // CKEDITOR.replace('education_description');
+
+
+
+    </script>
+
+    <script>
+        function slugValue()
+        {
+            var first_name =  jQuery('#first_name').val();
+            var last_name =  jQuery('#last_name').val();
+            jQuery('#slug').val(first_name+'-'+last_name);
+        }
     </script>
 @endsection
