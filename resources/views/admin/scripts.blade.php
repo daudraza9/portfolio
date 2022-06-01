@@ -5,6 +5,10 @@
 <script src="{{asset('admin-assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
 <!-- Vendor JS       -->
 <script src="{{asset('admin-assets/vendor/wow/wow.min.js')}}"></script>
+
+<!--Chart -->
+<script src="{{asset('admin-assets/vendor/chartjs/Chart.bundle.min.js')}}"></script>
+
 <!-- Main JS-->
 <script src="{{asset('admin-assets/js/main.js')}}"></script>
 <script src="{{asset('admin-assets/js/select2.min.js')}}"></script>
