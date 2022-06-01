@@ -16,6 +16,10 @@
           media="all">
     <!-- Bootstrap CSS-->
     <link href="{{asset('admin-assets/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
+
+    <!-- Dropify -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+    
     <!-- Main CSS-->
     <link href="{{asset('admin-assets/css/theme.css')}}" rel="stylesheet" media="all">
 {{--    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">--}}

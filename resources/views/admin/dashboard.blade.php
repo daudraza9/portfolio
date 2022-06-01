@@ -14,6 +14,7 @@
         </div>
     </div>
     <div class="row m-t-25">
+        <!-- All Chart Initialization location is public>admin-assets>js>main.js -->
         <div class="col-sm-6 col-lg-3">
             <div class="overview-item overview-item--c1">
                 <div class="overview__inner">
@@ -27,15 +28,7 @@
                         </div>
                     </div>
                     <div class="overview-chart">
-                        <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                            </div>
-                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                            </div>
-                        </div>
-                        <canvas id="widgetChart1" height="162" style="display: block; height: 130px; width: 200px;" width="250" class="chartjs-render-monitor"></canvas>
+                        <canvas id="widgetChart1"></canvas>
                     </div>
                 </div>
             </div>
@@ -53,15 +46,7 @@
                         </div>
                     </div>
                     <div class="overview-chart">
-                        <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                            </div>
-                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                            </div>
-                        </div>
-                        <canvas id="widgetChart2" height="143" style="display: block; height: 115px; width: 200px;" width="250" class="chartjs-render-monitor"></canvas>
+                        <canvas id="widgetChart2"></canvas>
                     </div>
                 </div>
             </div>
@@ -79,15 +64,7 @@
                         </div>
                     </div>
                     <div class="overview-chart">
-                        <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                            </div>
-                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                            </div>
-                        </div>
-                        <canvas id="widgetChart3" height="143" style="display: block; height: 115px; width: 200px;" width="250" class="chartjs-render-monitor"></canvas>
+                        <canvas id="widgetChart3"></canvas>
                     </div>
                 </div>
             </div>
@@ -105,15 +82,7 @@
                         </div>
                     </div>
                     <div class="overview-chart">
-                        <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                            </div>
-                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                            </div>
-                        </div>
-                        <canvas id="widgetChart4" height="143" style="display: block; height: 115px; width: 200px;" width="250" class="chartjs-render-monitor"></canvas>
+                        <canvas id="widgetChart4"></canvas>
                     </div>
                 </div>
             </div>
@@ -149,15 +118,7 @@
                         </div>
                     </div>
                     <div class="recent-report__chart">
-                        <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                            </div>
-                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                            </div>
-                        </div>
-                        <canvas id="recent-rep-chart" height="312" style="display: block; height: 250px; width: 475px;" width="593" class="chartjs-render-monitor"></canvas>
+                        <canvas id="recent-rep-chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -181,15 +142,7 @@
                         </div>
                         <div class="col-xl-6">
                             <div class="percent-chart">
-                                <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                    <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                    </div>
-                                </div>
-                                <canvas id="percent-chart" height="350" style="display: block; height: 280px; width: 172px;" width="215" class="chartjs-render-monitor"></canvas>
+                                <canvas id="percent-chart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -331,4 +284,5 @@
         </div>
     </div>
 </div>
+
 @endsection

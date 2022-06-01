@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label for="url" class="control-label mb-1">Url</label>
                                             <input id="url" name="url" type="text" class="form-control"
                                                    aria-required="true" aria-invalid="false" required
@@ -100,40 +100,7 @@
                                             </div>
                                             @enderror
                                         </div>
-                                        <div class="col-md-4">
-                                            <label for="featured_image" class="control-label mb-1">Featured
-                                                Image</label>
-                                            <input id="featured_image" name="featured_image" type="file"
-                                                   class="form-control"
-                                                   aria-required="true" aria-invalid="false" required>
-                                            @if(isset($portfolio))
-                                                <img width="200px"
-                                                     src="{{asset('storage/portfolio/'.$portfolio->featured_image)}}"
-                                                     alt="featured image">
-                                            @endif
-                                            @error('featured_image')
-                                            <div class="alert alert-danger" role="alert">
-                                                {{$message}}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="banner_image" class="control-label mb-1">Banner Image</label>
-                                            <input id="banner_image" name="banner_image" type="file"
-                                                   class="form-control"
-                                                   aria-required="true" aria-invalid="false" required>
-                                            @if(isset($portfolio))
-                                                <img width="200px"
-                                                     src="{{asset('storage/portfolio/'.$portfolio->banner_image)}}"
-                                                     alt="featured image">
-                                            @endif
-                                            @error('banner_image')
-                                            <div class="alert alert-danger" role="alert">
-                                                {{$message}}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label for="people" class="control-label mb-1">Add People </label>
                                             
                                             <select name="people" id="people" class="form-control w-100">
@@ -145,6 +112,34 @@
                                                 @endif
                                             </select>
                                         </div>
+                                        <div class="col-md-6 mt-2">
+                                            <label for="featured_image" class="control-label mb-1">Featured
+                                                Image</label>
+                                            <input id="featured_image" name="featured_image" alt="featured image" type="file"
+                                                   class="form-control dropify"
+                                                   aria-invalid="false"
+                                                   @if(isset($portfolio)) data-default-file="{{asset('storage/portfolio/'.$portfolio->featured_image)}}" @endif>
+                                            
+                                            @error('featured_image')
+                                            <div class="alert alert-danger" role="alert">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <label for="banner_image" class="control-label mb-1">Banner Image</label>
+                                            <input id="banner_image" name="banner_image" type="file"
+                                                   class="form-control dropify"
+                                                   aria-required="true" aria-invalid="false"
+                                                   @if(isset($portfolio)) data-default-file="{{asset('storage/portfolio/'.$portfolio->banner_image)}}" @endif>
+                                         
+                                            @error('banner_image')
+                                            <div class="alert alert-danger" role="alert">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div>
