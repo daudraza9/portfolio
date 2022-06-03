@@ -21,7 +21,7 @@ class FrontController extends Controller
     public function aboutUs(Request $request,$slug)
     {
         $people = People::where('slug',$slug)->get();
-      
+
         $skills = Skill::where('person_id',$people[0]->id)->get();
         $education = Education::where('people_id',$people[0]->id)->get();
         $experience = Experience::where('people_id',$people[0]->id)->get();
@@ -47,7 +47,18 @@ class FrontController extends Controller
     public function person(Request $request,$slug)
     {
        $people = People::where('slug',$slug)->get();
+       if (!isset($people[0]))
+       {
+//           dd('present');
+           return view('landing.403');
+
+       }
+       else
+       {
+//           dd('not');
+           return view('landing.person',compact('people'));
+       }
     //    dd($people[0]);
-        return view('landing.person',compact('people'));
+
     }
 }
