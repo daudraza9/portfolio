@@ -2,7 +2,14 @@
 @section('page_title','Manage People')
 @section('person_select','active')
 @section('container')
-
+<style>
+.temp-color{
+    display: none;
+}
+.temp-color.active{
+    display: block;
+}
+</style>
     <script src="{{asset('admin-assets/ckeditor/ckeditor.js')}}"></script>
 
     <h3>Add Person</h3>
@@ -244,6 +251,7 @@
 
                                         </div>
                                         <div class="col-md-4">
+                                               
                                             <label for="" class="control-label mb-1"></label>
                                             <div class="form-check mt-3">
                                                 <label for="is_home" class="control-label mb-1">
@@ -258,8 +266,20 @@
                                                 </div>
                                                 @enderror
                                             </div>
-
+                                           
                                         </div>
+                                        <div class="col-md-4">
+                                               
+                                               <label for="" class="control-label mb-1"></label>
+                                               <div class="form-check mt-3">
+                                                   <label for="is_home" class="control-label mb-1">
+                                                       Show in home page</label>
+                                                   <button class="btn btn-primary" data-toggle="modal" data-target="#templateModal"> 
+                                                       Select Template
+                                                   </button>
+                                               </div>
+                                              
+                                           </div>
                                         <div class="col-md-12">
                                             <label for="description" class="control-label mb-1">Description</label>
                                             <textarea id="description" name="description" type="text"
@@ -739,100 +759,243 @@
             </div>
         </div>
     </div>
-    @include('admin.scripts')
+        
+       
 
-    <script>
-        var loop_count = 1;
+  
+@endsection
 
-        function add_more() {
-            loop_count++;
-            var html = '<input id="skill_id" type="hidden" name="skill_id[]" ><div class="card" id="product_attr_' + loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
+@section('modals')
+    
+        <!-- modal large -->
+        <div class="modal fade" id="templateModal" tabindex="-1" role="dialog" aria-labelledby="templateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="templateModalLabel">Select Template</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
 
-            html += '<div class="col-md-2"><label for="skill" class="control-label mb-1"> Skill</label><input id="skill" name="skill[]" type="text" class="form-control" aria-required="true" aria-invalid="false" required></div>';
+                            <div class="row">
+                            <div class="col-md-4">
+                                    <div class="card-body">
+                                        <form action="">
+                                            <div class="form-check">
+                                                    
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="yellow" checked>
+                                                    <label class="form-check-label" for="yellow">
+                                                        Yellow
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="green" >
+                                                    <label class="form-check-label" for="green">
+                                                        Green
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="red" >
+                                                    <label class="form-check-label" for="red">
+                                                        Red
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="blue" >
+                                                    <label class="form-check-label" for="blue">
+                                                        Blue
+                                                    </label>
+                                                </div>
+                                                
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="magenta" >
+                                                    <label class="form-check-label" for="magenta">
+                                                        Magenta
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="goldenrod" >
+                                                    <label class="form-check-label" for="goldenrod">
+                                                        Golden
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="orange" >
+                                                    <label class="form-check-label" for="orange">
+                                                        Orange
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="purple">
+                                                    <label class="form-check-label" for="purple">
+                                                        Purple
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="yellowgreen" >
+                                                    <label class="form-check-label" for="yellowgreen">
+                                                        Green-Yellow
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="template" id="bluevoilet" >
+                                                    <label class="form-check-label" for="bluevoilet">
+                                                        Blue-Voilet
+                                                    </label>
+                                                </div>
+                                            </div>
 
-            html += '<div class="col-md-2"><label for="level" class="control-label mb-1"> Level</label><input id="level" name="level[]" type="number" class="form-control" aria-required="true" aria-invalid="false" required></div>';
+                                            <a href="#">
+                                                <button type="button" class="btn btn-success mt-3">Submit</button>
+                                            </a>
+                                        </form>
+                                        
+                                        
+                                    </div>
+                                  
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-body custom-border">
+                                            <img class="temp-color active yellow"  src="{{asset('admin-assets/images/templates/yellow.png')}}" alt="">
+                                            <img class="temp-color green" src="{{asset('admin-assets/images/templates/green.png')}}" alt="">
+                                            <img class="temp-color red" src="{{asset('admin-assets/images/templates/red.png')}}" alt="">
+                                            <img class="temp-color blue" src="{{asset('admin-assets/images/templates/blue.png')}}" alt="">
+                                            <img class="temp-color magenta" src="{{asset('admin-assets/images/templates/magenta.png')}}" alt="">
+                                            <img class="temp-color goldenrod" src="{{asset('admin-assets/images/templates/golden.png')}}" alt="">
+                                            <img class="temp-color orange" src="{{asset('admin-assets/images/templates/orange.png')}}" alt="">
+                                            <img class="temp-color purple" src="{{asset('admin-assets/images/templates/purple.png')}}" alt="">
+                                            <img class="temp-color yellowgreen" src="{{asset('admin-assets/images/templates/green-yellow.png')}}" alt="">
+                                            <img class="temp-color bluevoilet" src="{{asset('admin-assets/images/templates/blue-violet.png')}}" alt="">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            
+                          
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal large -->
 
-            html += '<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_more("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+@endsection
 
-            html += '</div></div></div></div>';
+@section('scripts')
 
-            jQuery('#product_attr_box').append(html)
-        }
+<script>
+    var loop_count = 1;
 
-        function remove_more(loop_count) {
-            jQuery('#product_attr_' + loop_count).remove();
-        }
+    $(document).ready(function(){
+       $('[ name="template"]').change(function(){
+           let id  = $(this).attr('id');
+           $('.temp-color').removeClass('active');
+           $("." +id).addClass('active');
+       })
+    });
 
-        var edu_loop_count = 1
+    function add_more() {
+        loop_count++;
+        var html = '<input id="skill_id" type="hidden" name="skill_id[]" ><div class="card" id="product_attr_' + loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
 
-        function add_more_education() {
-            edu_loop_count++;
-            var html = '<input id="education_id" type="hidden" name="education_id[]" ><div class="card" id="education_attr_' + edu_loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
+        html += '<div class="col-md-2"><label for="skill" class="control-label mb-1"> Skill</label><input id="skill" name="skill[]" type="text" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
-            html += '<div class="col-md-2"><label for="start" class="control-label mb-1"> Start Date</label><input id="start" name="start[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
+        html += '<div class="col-md-2"><label for="level" class="control-label mb-1"> Level</label><input id="level" name="level[]" type="number" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
-            html += '<div class="col-md-2"><label for="end" class="control-label mb-1"> End Date</label><input id="end" name="end[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
+        html += '<div class="col-md-2"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_more("' + loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
 
-            html += '<div class="col-md-3"><label for="degree" class="control-label mb-1"> Degree</label><input id="degree" name="degree[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
+        html += '</div></div></div></div>';
 
-            html += '<div class="col-md-3"><label for="university" class="control-label mb-1"> university</label><input id="university" name="university[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
+        jQuery('#product_attr_box').append(html)
+    }
 
+    function remove_more(loop_count) {
+        jQuery('#product_attr_' + loop_count).remove();
+    }
 
-            html += '<div class="col-md-5"><label for="education_description" class="control-label mb-1"> education description</label><textarea id="education_description" name="education_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
+    var edu_loop_count = 1
 
-            html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_education("' + edu_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+    function add_more_education() {
+        edu_loop_count++;
+        var html = '<input id="education_id" type="hidden" name="education_id[]" ><div class="card" id="education_attr_' + edu_loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
 
-            html += '</div></div></div></div>';
+        html += '<div class="col-md-2"><label for="start" class="control-label mb-1"> Start Date</label><input id="start" name="start[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
-            jQuery('#education_box').append(html)
-        }
+        html += '<div class="col-md-2"><label for="end" class="control-label mb-1"> End Date</label><input id="end" name="end[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
 
-        function remove_education(loop_count) {
-            jQuery('#education_attr_' + loop_count).remove();
-        }
+        html += '<div class="col-md-3"><label for="degree" class="control-label mb-1"> Degree</label><input id="degree" name="degree[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 
-        var exp_loop_count = 1
-
-        function add_more_experience() {
-            exp_loop_count++;
-            var html = '<input id="experience_id" type="hidden" name="experience_id[]" ><div class="card" id="experience_attr_' + exp_loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
-
-            html += '<div class="col-md-2"><label for="exp_start" class="control-label mb-1"> Start Date</label><input id="exp_start" name="exp_start[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
-
-            html += '<div class="col-md-2"><label for="exp_end" class="control-label mb-1"> End Date</label><input id="exp_end" name="exp_end[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
-
-
-            html += '<div class="col-md-3"><label for="company" class="control-label mb-1"> company</label><input id="company" name="company[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
-
-            html += '<div class="col-md-3"><label for="designation" class="control-label mb-1"> Designation</label><input id="company" name="designation[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
+        html += '<div class="col-md-3"><label for="university" class="control-label mb-1"> university</label><input id="university" name="university[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
 
 
-            html += '<div class="col-md-5"><label for="experience_description" class="control-label mb-1"> Experience description</label><textarea id="experience_description" name="experience_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
+        html += '<div class="col-md-5"><label for="education_description" class="control-label mb-1"> education description</label><textarea id="education_description" name="education_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
 
-            html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_experience("' + exp_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+        html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_education("' + edu_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
 
-            html += '</div></div></div></div>';
+        html += '</div></div></div></div>';
 
-            jQuery('#experience_box').append(html)
-        }
+        jQuery('#education_box').append(html)
+    }
 
-        function remove_experience(loop_count) {
-            jQuery('#experience_attr_' + loop_count).remove();
-        }
+    function remove_education(loop_count) {
+        jQuery('#education_attr_' + loop_count).remove();
+    }
 
-        CKEDITOR.replace('description');
-        // CKEDITOR.replace('education_description');
+    var exp_loop_count = 1
+
+    function add_more_experience() {
+        exp_loop_count++;
+        var html = '<input id="experience_id" type="hidden" name="experience_id[]" ><div class="card" id="experience_attr_' + exp_loop_count + '"><div class="card-body"><div class="form-group"><div class="row">';
+
+        html += '<div class="col-md-2"><label for="exp_start" class="control-label mb-1"> Start Date</label><input id="exp_start" name="exp_start[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
+
+        html += '<div class="col-md-2"><label for="exp_end" class="control-label mb-1"> End Date</label><input id="exp_end" name="exp_end[]" type="date" class="form-control" aria-required="true" aria-invalid="false" required></div>';
+
+
+        html += '<div class="col-md-3"><label for="company" class="control-label mb-1"> company</label><input id="company" name="company[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
+
+        html += '<div class="col-md-3"><label for="designation" class="control-label mb-1"> Designation</label><input id="company" name="designation[]" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required></div>';
+
+
+        html += '<div class="col-md-5"><label for="experience_description" class="control-label mb-1"> Experience description</label><textarea id="experience_description" name="experience_description[]" type="text" class="form-control" aria-required="true" aria-invalid="false"  required></textarea></div>';
+
+        html += '<div class="col-md-3"><label for="attr_image" class="control-label mb-1"> &nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger" onclick=remove_experience("' + exp_loop_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
+
+        html += '</div></div></div></div>';
+
+        jQuery('#experience_box').append(html)
+    }
+
+    function remove_experience(loop_count) {
+        jQuery('#experience_attr_' + loop_count).remove();
+    }
+
+    CKEDITOR.replace('description');
+    // CKEDITOR.replace('education_description');
 
 
 
-    </script>
+</script>
 
-    <script>
-        function slugValue()
-        {
-            var first_name =  jQuery('#first_name').val();
-            var last_name =  jQuery('#last_name').val();
-            jQuery('#slug').val(first_name+'-'+last_name);
-        }
-    </script>
+<script>
+    function slugValue()
+    {
+        var first_name =  jQuery('#first_name').val();
+        var last_name =  jQuery('#last_name').val();
+        jQuery('#slug').val(first_name+'-'+last_name);
+    }
+   
+</script>
 @endsection

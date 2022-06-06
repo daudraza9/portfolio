@@ -29,6 +29,11 @@ class PersonController extends Controller
         ]);
     }
 
+    public function manageTemplate()
+    {
+        return view('admin.person.manage-template',[
+        ]);
+    }
 
     public function insert(Request $request)
     {

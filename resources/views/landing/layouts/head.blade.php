@@ -35,6 +35,7 @@
     <link href="{{asset('front-assets/css/style.css')}}" rel="stylesheet">
 
     <!-- CSS Skin File -->
+
     <link href="{{asset('front-assets/css/skins/yellow.css')}}" rel="stylesheet">
 
     <link rel="alternate stylesheet" type="text/css" title="yellow" href="{{asset('front-assets/css/skins/yellow.css')}}" />

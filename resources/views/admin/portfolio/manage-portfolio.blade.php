@@ -76,9 +76,14 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="language" class="control-label mb-1">Language (Seperate with commas ",")</label>
-                                            <input id="language" name="language" type="text" class="form-control"
-                                                   aria-required="true" aria-invalid="false" required
-                                                   @if(isset($portfolio)) value="{{$portfolio->language}}" @endif>
+                                            <select id="language" name="language"  class="form-control w-100" multiple="multiple">
+                                                <option value="Select or Type" disabled >Select or Type</option>
+                                                @if(isset($portfolio))
+                                                    @if(!empty($portfolio->language))
+                                                        <option value="{{$portfolio->language}}" selected>$portfolio->language</option>
+                                                    @endif
+                                                @endif
+                                            </select>
                                             @error('language')
                                             <div class="alert alert-danger" role="alert">
                                                 {{$message}}
@@ -155,11 +160,18 @@
             </div>
         </div>
     </div>
-    @include('admin.scripts')
 
 
+  
+@endsection
+
+@section('scripts')
     <script>
         $(document).ready(function () {
+            $("#language").select2({
+                tags: true,
+                tokenSeparators: [',', ' ']
+            })
             $('#people').select2({
                 placeholder: 'Select people',
                 ajax: {

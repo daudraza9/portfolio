@@ -13,9 +13,10 @@
 <script src="{{asset('admin-assets/vendor/chartjs/Chart.bundle.min.js')}}"></script>
 
 <!-- Main JS-->
-<script src="{{asset('admin-assets/js/main.js')}}"></script>
+
 <script src="{{asset('admin-assets/js/select2.min.js')}}"></script>
 
+<script src="{{asset('admin-assets/js/main.js')}}"></script>
 <script>
 
     $(document).ready(function(){

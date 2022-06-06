@@ -49,6 +49,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('/edit/{id}', [PersonController::class, 'edit'])->name('edit');
             Route::post('/update', [PersonController::class, 'update'])->name('update');
             Route::get('/delete', [PersonController::class, 'delete'])->name('delete');
+
+            Route::get('/manage-template', [PersonController::class, 'manageTemplate'])->name('manage-template');
+
             Route::get('/select-person', [PersonController::class, 'selectPerson'])->name('select-person');
             Route::get('/delete-skill/{skillId}/{personId}', [PersonController::class, 'deleteSkill'])->name('delete-skill');
             Route::get('/delete-education/{educationId}/{personId}', [PersonController::class, 'deleteEducation'])->name('delete-education');
