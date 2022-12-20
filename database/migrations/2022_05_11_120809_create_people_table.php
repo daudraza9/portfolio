@@ -28,7 +28,6 @@ class CreatePeopleTable extends Migration
             $table->string('skype');
             $table->string('slug');
             $table->string('language');
-            $table->string('language');
             $table->string('experience');
             $table->string('project_completed');
             $table->integer('total_client');
