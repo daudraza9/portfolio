@@ -38,10 +38,14 @@ class PersonController extends Controller
         $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
+            'designation'=>'required',
+            'github_username'=>'required',
+            'linkedIn_url'=>'required',
             'age'=>'required',
             'slug'=>'required|unique:people,slug,' . $request->post('id'),
             'nationality'=>'required',
             'freelance'=>'required',
+            'person_designation'=>'required',
             'address'=>'required',
             'phone'=>'required',
             'email'=>'required',
@@ -76,9 +80,12 @@ class PersonController extends Controller
         $person = People::create([
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
+            'linkedIn_url'=>$request->linkedIn_url,
+            'github_username'=>$request->github_username,
             'age'=>$request->age,
             'nationality'=>$request->nationality,
             'freelance'=>$request->freelance,
+            'designation'=>$request->person_designation,
             'address'=>$request->address,
             'phone'=>$request->phone,
             'email'=>$request->email,
@@ -166,12 +173,17 @@ class PersonController extends Controller
             'experience'=>$experience,
         ]);
     }
+
     public function update(Request $request){
 //        dd($request->all());
         $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
+            'designation'=>'required',
+            'github_username'=>'required',
+            'linkedIn_url'=>'required',
             'age'=>'required',
+            'person_designation'=>'required',
             'slug'=>'required',
             'nationality'=>'required',
             'freelance'=>'required',
@@ -185,13 +197,16 @@ class PersonController extends Controller
             'total_clients'=>'required',
             'total_tip'=>'required',
             'description'=>'required',
-            'image'=>'required|mimes:jpeg,jpg,png',
+//            'image'=>'required|mimes:jpeg,jpg,png',
         ]);
         $people = People::findorfail($request->id);
         $people->first_name = $request->first_name;
         $people->last_name = $request->last_name;
+        $people->github_username= $request->github_username;
+        $people->linkedIn_url = $request->linkedIn_url;
         $people->description = $request->description;
         $people->age = $request->age;
+        $people->designation=$request->person_designation;
         $people->nationality = $request->nationality;
         $people->freelance = $request->freelance;
         $people->address = $request->address;
@@ -227,26 +242,34 @@ class PersonController extends Controller
         $SkillIdArray = $request->skill_id;
         $skillArray =$request->skill;
         $levelArray =$request->level;
-
         foreach ($skillArray as $key=>$val)
         {
             $personSkills = [];
             $personSkills['person_id']=$people_Id;
             $personSkills['name'] =$skillArray[$key];
             $personSkills['level']=$levelArray[$key];
-            DB::table('skills')->where('id',$SkillIdArray[$key])->update($personSkills);
+
+                if($SkillIdArray[$key] !='')
+                {
+                    DB::table('skills')->where(['id'=>$SkillIdArray[$key]])->update($personSkills);
+                }
+                else
+                {
+                    DB::table('skills')->insert($personSkills);
+                }
+
         }
         //-- person skills ends --//
 
         //--- person education start ---//
-        $educationArray =$request->education_id;
+        $educationIdArray =$request->education_id;
         $startArray = $request->start;
         $endArray = $request->end;
         $degreeArray = $request->degree;
         $universityArray = $request->university;
         $educationDescriptionArray = $request->education_description;
 
-        foreach ($educationArray as $key => $val)
+        foreach ($educationIdArray as $key => $val)
         {
             $personEducation = [];
             $personEducation['people_id']=$people_Id;
@@ -255,10 +278,47 @@ class PersonController extends Controller
             $personEducation['degree']=$degreeArray[$key];
             $personEducation['university']=$universityArray[$key];
             $personEducation['education_description']=$educationDescriptionArray[$key];
-            DB::table('education')->where('id',$educationArray[$key])->update($personEducation);
+
+            if($educationIdArray[$key] !='')
+            {
+                DB::table('education')->where('id', $educationIdArray[$key])->update($personEducation); //facades
+            }
+            else
+            {
+//                Education::create($personEducation); //eloquent
+                DB::table('education')->insert($personEducation);
+            }
         }
         //--- person education end ---//
 
+        //--Person experience start--//
+        $experienceIdArray = $request->experience_id;
+        $expStartArray = $request->start;
+        $expEndArray = $request->end;
+        $designationArray = $request->designation;
+        $companyArray = $request->company;
+        $experienceDescriptionArray = $request->experience_description;
+
+        foreach ($experienceIdArray as $key => $val)
+        {
+            $personExperience = [];
+            $personExperience['people_id']=$people_Id;
+            $personExperience['exp_start']=$expStartArray[$key];
+            $personExperience['exp_end']=$expEndArray[$key];
+            $personExperience['designation']=$designationArray[$key];
+            $personExperience['company']=$companyArray[$key];
+            $personExperience['experience_description']=$experienceDescriptionArray[$key];
+
+            if($experienceIdArray[$key] !='')
+            {
+                DB::table('experiences')->where('id', $experienceIdArray[$key])->update($personExperience);
+            }
+            else{
+            Experience::create($personExperience);
+            }
+        }
+
+        //--Person experience end--//
         $msg = "People updated successfully";
         $request->session()->flash('message',$msg);
         return redirect('admin/person');
@@ -307,6 +367,25 @@ class PersonController extends Controller
 
     }
 
+    public function deleteSkill(Request $request,$skillId,$personId)
+    {
+        $skill = Skill::findorfail($skillId);
+        $skill->delete();
+        return redirect('admin/person/edit/'.$personId);
+    }
 
+    public function deleteEducation(Request $request,$educationId,$personId)
+    {
+        $education = Education::findorfail($educationId);
+        $education->delete();
+        return redirect('admin/person/edit/'.$personId);
+    }
+
+    public function deleteExperience(Request $request,$experienceId,$personId)
+    {
+        $experience = Experience::findorfail($experienceId);
+        $experience->delete();
+        return redirect('admin/person/edit/'.$personId);
+    }
 
 }
